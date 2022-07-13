@@ -1,0 +1,17 @@
+version: "3.9"
+
+volumes:
+  pg_volume:
+
+services:
+  pg:
+    image: postgres:14.3
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=basicdb
+      - POSTGRES_USER=basicdb
+      - POSTGRES_DB=basicdb
+    volumes:
+      - pg_volume:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
